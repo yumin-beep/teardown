@@ -1,0 +1,1047 @@
+{
+ "seoul": {
+  "name": "Seoul",
+  "native": "서울",
+  "lat": 37.5665,
+  "lon": 126.978,
+  "tz": "Asia/Seoul",
+  "rules_by": "Ministry of Environment guide, Seoul Metropolitan Government",
+  "lang": "ko",
+  "checked": "2026-11-01",
+  "figure": {
+   "value": "64 %",
+   "what": "of the household waste generated was recycled",
+   "period": "2020",
+   "more": "2,033,960 of 3,177,620 t. The notice does not define \"recycled\" any further.",
+   "counts": "Recycled share of all household waste generated",
+   "by": "Seoul Metropolitan Government, notice of 2 Nov 2023",
+   "quote": "생활폐기물은 총 발생량 3,177,620톤 중 재활용률은 64%에 불과한 2,033,960톤",
+   "url": "https://news.seoul.go.kr/env/archives/518415",
+   "read": "2026-11-16",
+   "street": {
+    "pct": "64 %",
+    "short": "recycled",
+    "what": "of household waste recycled",
+    "clear": 0.64,
+    "clearWord": "recycled",
+    "restWord": "not recycled",
+    "basis": "2,033,960 of 3,177,620 t of household waste, as the city's notice counts it."
+   }
+  },
+  "bins": [
+   {
+    "id": "paper",
+    "name": "Paper",
+    "short": "Paper",
+    "color": "#2f6fb3",
+    "fate": "recycle",
+    "stream": "paper"
+   },
+   {
+    "id": "plastic",
+    "name": "Plastic",
+    "short": "Plastic",
+    "color": "#d9822b",
+    "fate": "recycle",
+    "stream": "plastic"
+   },
+   {
+    "id": "general",
+    "name": "Pay-as-you-throw bag",
+    "short": "Trash bag",
+    "color": "#555555",
+    "fate": "residual",
+    "stream": "residual"
+   },
+   {
+    "id": "clear_pet",
+    "name": "Clear PET bottles (separate)",
+    "short": "Clear PET",
+    "color": "#36b3c9",
+    "fate": "recycle",
+    "stream": "pet"
+   },
+   {
+    "id": "vinyl",
+    "name": "Plastic film (비닐류)",
+    "short": "Film",
+    "color": "#c86dd7",
+    "fate": "recycle",
+    "stream": "film"
+   },
+   {
+    "id": "food",
+    "name": "Food waste",
+    "short": "Food",
+    "color": "#8a6a2e",
+    "fate": "organic",
+    "stream": "organic"
+   },
+   {
+    "id": "ewaste",
+    "name": "Waste electronics",
+    "short": "E-waste",
+    "color": "#9a4fd0",
+    "fate": "return",
+    "stream": "takeback"
+   },
+   {
+    "id": "none",
+    "name": "Not stated",
+    "short": "?",
+    "color": "#b9b4aa",
+    "fate": "unknown",
+    "stream": "unknown"
+   }
+  ],
+  "rules": {
+   "coffee_cup": {
+    "cup": {
+     "bin": "paper",
+     "quote": "내용물을 비우고 물로 헹구는 등 이물질을 제거하여 배출",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.15",
+     "basis": "stated",
+     "quote_en": "Empty it and rinse off residue. The guide lists paper cups (종이컵) under paper (종이류), and its FAQ (p.21) adds: best collected on their own and put out with paper."
+    },
+    "lining": {
+     "bin": "paper",
+     "quote": "(bonded to the cup; goes with it)",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.15",
+     "basis": "bonded"
+    },
+    "sleeve": {
+     "bin": "paper",
+     "quote": "종이류로 배출",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.28 (골판지, corrugated board)",
+     "basis": "nearest",
+     "quote_en": "Put out as paper. Nearest listed item: corrugated board."
+    },
+    "lid": {
+     "bin": "plastic",
+     "quote": "플라스틱으로 배출",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.33 (캡, plastic cap/lid)",
+     "basis": "nearest",
+     "quote_en": "Put out as plastic. Nearest listed item: plastic caps and lids (캡)."
+    },
+    "stirrer": {
+     "bin": "general",
+     "quote": "종량제봉투로 배출",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.28 (나무젓가락, wooden chopsticks)",
+     "basis": "nearest",
+     "quote_en": "Pay-as-you-throw bag. Nearest listed item: wooden chopsticks."
+    }
+   },
+   "pet_bottle": {
+    "bottle": {
+     "bin": "clear_pet",
+     "quote": "내용물은 비우고 라벨을 제거한 후, 찌그러트려 뚜껑을 닫아 일반 플라스틱과 구분하여 배출",
+     "url": "https://news.seoul.go.kr/env/archives/560708",
+     "source": "Seoul Metropolitan Government, 2024-11-08",
+     "basis": "stated",
+     "quote_en": "Empty it, take the label off, crush it, close the cap, and keep it apart from other plastics."
+    },
+    "cap": {
+     "bin": "clear_pet",
+     "quote": "찌그러트려 뚜껑을 닫아",
+     "url": "https://news.seoul.go.kr/env/archives/560708",
+     "source": "Seoul Metropolitan Government, 2024-11-08",
+     "basis": "stated",
+     "quote_en": "Crush it and close the cap: the cap stays on the bottle.",
+     "keep_on": true,
+     "also": [
+      {
+       "bin": "plastic",
+       "quote": "페트병 라벨, 뚜껑은 가급적 분리해서 별도 배출합니다.",
+       "quote_en": "Take labels and caps off PET bottles where you can and put them out separately. The guide's item list sends plastic caps (캡) to plastic (p.33).",
+       "source": "MoE sorting guide p.23 (FAQ)",
+       "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf"
+      }
+     ]
+    },
+    "ring": {
+     "bin": "clear_pet",
+     "quote": "(stays on the neck; goes with the bottle)",
+     "url": "https://news.seoul.go.kr/env/archives/560708",
+     "source": "Seoul Metropolitan Government, 2024-11-08",
+     "basis": "bonded"
+    },
+    "label": {
+     "bin": "vinyl",
+     "quote": "분리배출표시가 없는 비닐류 포함",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.14 (비닐류, plastic film)",
+     "basis": "nearest",
+     "quote_en": "Film items count as plastic film even without a recycling mark. The guide says to take the label off but not where it goes; plastic film is the nearest rule."
+    }
+   },
+   "pizza_box": {
+    "lid": {
+     "bin": "paper",
+     "quote": "종이류로 배출",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.28 (골판지, corrugated board)",
+     "basis": "nearest",
+     "quote_en": "Put out as paper. The guide's pizza-box entry only covers the oily inner paper; nearest rule for the clean lid: corrugated board."
+    },
+    "base": {
+     "bin": "general",
+     "quote": "기름에 오염된 내부 종이는 종량제봉투로 배출",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.33 (피자박스, pizza box)",
+     "basis": "nearest",
+     "quote_en": "Oil-stained inner paper goes in the pay-as-you-throw bag. The guide speaks of the inner paper, not the greasy board itself; this is the nearest rule."
+    },
+    "crust": {
+     "bin": "food",
+     "quote": "음식물류폐기물로 배출",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.30 (상한 음식, spoiled food)",
+     "basis": "nearest",
+     "quote_en": "Put out as food waste. Nearest listed item: spoiled food."
+    }
+   },
+   "smartphone": {
+    "frame": {
+     "bin": "ewaste",
+     "quote": "폐가전제품으로 배출 ※우체국 보상판매 이용 가능",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.34 (휴대전화, mobile phone)",
+     "basis": "stated",
+     "quote_en": "Waste electronics. Post-office trade-in is also available."
+    },
+    "battery": {
+     "bin": "ewaste",
+     "quote": "휴대폰배터리는 휴대폰과 함께 배출한다.",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.12",
+     "basis": "stated",
+     "quote_en": "Put the phone battery out together with the phone."
+    },
+    "board": {
+     "bin": "ewaste",
+     "quote": "(inside the phone; goes with it)",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.34",
+     "basis": "bonded"
+    },
+    "glass": {
+     "bin": "ewaste",
+     "quote": "(part of the phone; goes with it)",
+     "url": "https://sustainability.korea.ac.kr/files/Separation%20and%20discharge%20guide%20for%20recycling%20items%20(Ministry%20of%20Environment).pdf",
+     "source": "MoE sorting guide p.34",
+     "basis": "bonded"
+    }
+   }
+  },
+  "after": {
+   "smartphone": {
+    "read": "2026-11-16",
+    "works": {
+     "named": false,
+     "head": "No way to pass it on is named",
+     "say": "The city's pages name no reuse channel. \"Donating\" a phone here means donating its metal: the phone is shredded and part of the proceeds goes to charity. The national guide adds that a post-office trade-in is available.",
+     "quote": "폐휴대폰 기부하면 일자리도 생기고 장학금도 쌓여요.",
+     "quote_en": "Donate an old phone and jobs and scholarships add up.",
+     "source": "Seoul Metropolitan Government, 폐금속자원 재활용 참여 (page dated 2023-10-31)",
+     "url": "https://news.seoul.go.kr/env/archives/1709"
+    },
+    "done": {
+     "head": "Phone collection box",
+     "say": "Boxes stand at subway ticket gates, community service centres, large public buildings and post offices. The 25 district offices empty them once a week.",
+     "quote": "(지하철역 개찰구, 동주민센터, 대규모 관공서 건물, 전국 우체국 등에 비치되어 있습니다.)",
+     "quote_en": "Boxes are placed at subway ticket gates, community service centres, large public buildings and post offices nationwide.",
+     "source": "Seoul Metropolitan Government, 폐금속자원 재활용 참여 (page dated 2023-10-31)",
+     "url": "https://news.seoul.go.kr/env/archives/1709"
+    },
+    "next": {
+     "say": "Taken to the SR Center, the city's metal-recovery plant, shredded whole and mined for metals. Part of the proceeds goes to the Seoul Community Chest and the Seoul Scholarship Foundation.",
+     "quote": "회수한 폐휴대폰은 서울도시금속회수센터(SR센터)로 옮겨져 개인정보가 유출되지 않도록 전량 파쇄한 후 유가 금속을 추출해 자원화 합니다.",
+     "source": "Seoul Metropolitan Government, 폐금속자원 재활용 참여",
+     "url": "https://news.seoul.go.kr/env/archives/1709"
+    },
+    "data": {
+     "who": "collector",
+     "short": "The plant shreds every phone",
+     "say": "The plant shreds every phone so that no personal data gets out."
+    },
+    "count": {
+     "say": "1.938 million phones collected from 2009 to February 2026.",
+     "quote": "'09년~'26.2월 까지 폐가전 55,682톤, 폐휴대폰 193.8만대를 수거",
+     "source": "Seoul Metropolitan Government, 폐금속자원재활용 사업이란? (page dated 2026-03-09)",
+     "url": "https://news.seoul.go.kr/env/archives/135"
+    }
+   }
+  }
+ },
+ "berlin": {
+  "name": "Berlin",
+  "native": "Berlin",
+  "lat": 52.52,
+  "lon": 13.405,
+  "tz": "Europe/Berlin",
+  "rules_by": "BSR (city cleaning service), Berlin district offices",
+  "lang": "de",
+  "checked": "2026-11-15",
+  "figure": {
+   "value": "30.7 %",
+   "what": "of the waste from households and small businesses went to material recycling",
+   "period": "2021",
+   "more": "436,426 of 1,419,994 t. Burning for energy and other recovery are counted apart: 64.1 %.",
+   "counts": "Material recycling only; energy recovery is counted apart",
+   "by": "Land Berlin, Abfallbilanz 2021 (as of Oct 2022)",
+   "quote": "Dies entspricht einer Recyclingquote von rund 30,7 %.",
+   "url": "https://www.Berlin.de/sen/uvk/_assets/umwelt/kreislaufwirtschaft/abfallbehoerde/abfallbilanzen/abfallbilanz_2021.pdf",
+   "read": "2026-11-16",
+   "street": {
+    "pct": "30.7 %",
+    "short": "material recycling",
+    "what": "to material recycling",
+    "clear": 0.307,
+    "energy": 0.641,
+    "clearWord": "material recycling",
+    "energyWord": "energy and other recovery",
+    "restWord": "disposal and water loss",
+    "basis": "Table 1 of the waste balance: 30.7 % material recycling, 64.1 % energy and other recovery, 0.5 % disposal, 4.6 % water loss."
+   }
+  },
+  "bins": [
+   {
+    "id": "yellow",
+    "name": "Wertstofftonne (yellow)",
+    "short": "Yellow",
+    "color": "#e8c21e",
+    "fate": "recycle",
+    "stream": "packaging"
+   },
+   {
+    "id": "paper",
+    "name": "Paper (blue)",
+    "short": "Paper",
+    "color": "#2a5db0",
+    "fate": "recycle",
+    "stream": "paper"
+   },
+   {
+    "id": "bio",
+    "name": "Biotonne (brown)",
+    "short": "Bio",
+    "color": "#7a5230",
+    "fate": "organic",
+    "stream": "organic"
+   },
+   {
+    "id": "rest",
+    "name": "Restmüll (grey)",
+    "short": "Rest",
+    "color": "#5a5a5a",
+    "fate": "residual",
+    "stream": "residual"
+   },
+   {
+    "id": "pfand",
+    "name": "Deposit return (shop)",
+    "short": "Pfand",
+    "color": "#22a6a0",
+    "fate": "return",
+    "stream": "deposit"
+   },
+   {
+    "id": "recyclinghof",
+    "name": "BSR Recyclinghof",
+    "short": "Recyclinghof",
+    "color": "#9a4fd0",
+    "fate": "return",
+    "stream": "takeback"
+   },
+   {
+    "id": "none",
+    "name": "Not stated",
+    "short": "?",
+    "color": "#b9b4aa",
+    "fate": "unknown",
+    "stream": "unknown"
+   }
+  ],
+  "rules": {
+   "coffee_cup": {
+    "cup": {
+     "bin": "yellow",
+     "quote": "In die Wertstofftonne können neben Leichtverpackungen (aus Kunststoff, Metall und Verbundstoff) auch sonstige kleinteilige Abfälle aus Kunststoff, Metall und Verbundmaterialien entsorgt werden.",
+     "url": "https://www.bsr.de/coffee-to-go-einwegbecher-2b066e02ba4bf348",
+     "source": "BSR Abfall-ABC: Coffee-to-go-Einwegbecher",
+     "basis": "stated",
+     "quote_en": "Coffee-to-go cups are listed as packaging for the Wertstofftonne (yellow)."
+    },
+    "lining": {
+     "bin": "yellow",
+     "quote": "(bonded to the cup; goes with it)",
+     "url": "https://www.bsr.de/coffee-to-go-einwegbecher-2b066e02ba4bf348",
+     "source": "BSR Abfall-ABC: Coffee-to-go-Einwegbecher",
+     "basis": "bonded"
+    },
+    "sleeve": {
+     "bin": "paper",
+     "quote": "Pappe bitte zerreißen",
+     "url": "https://www.bsr.de/pappe-0f200d06d736521c",
+     "source": "BSR Abfall-ABC: Pappe (no entry for cup sleeves)",
+     "basis": "nearest",
+     "quote_en": "Tear up cardboard (Papier-Tonne). Sleeves are not listed; nearest entry: Pappe."
+    },
+    "lid": {
+     "bin": "yellow",
+     "quote": "In die Wertstofftonne können neben Leichtverpackungen (aus Kunststoff, Metall und Verbundstoff) auch sonstige kleinteilige Abfälle aus Kunststoff, Metall und Verbundmaterialien entsorgt werden.",
+     "url": "https://www.bsr.de/deckel-aus-alu-kunststoff-9104f4007ab576a3",
+     "source": "BSR Abfall-ABC: Deckel aus Alu/Kunststoff",
+     "basis": "stated",
+     "quote_en": "Aluminium or plastic lids: Wertstofftonne."
+    },
+    "stirrer": {
+     "bin": "rest",
+     "quote": "Alle festen Siedlungsabfälle die übrig bleiben, nachdem Biogut, Papier und Pappe, Glas- und sonstige Verpackungen sowie Wertstoffe getrennt gesammelt wurden, werden als Hausmüll bezeichnet.",
+     "url": "https://www.bsr.de/einwegbesteck-holz-a9ff8b627aaaf2ce",
+     "source": "BSR Abfall-ABC: Einwegbesteck (Holz) (no entry for stirrers)",
+     "basis": "nearest",
+     "quote_en": "Nearest entry: wooden disposable cutlery, listed as household waste (Restabfall)."
+    }
+   },
+   "pet_bottle": {
+    "bottle": {
+     "bin": "pfand",
+     "quote": "Sie können sie in jeder Verkaufsstelle zurückgeben, die Einweggebinde aus dem gleichen Material verkauft.",
+     "url": "https://www.verbraucherzentrale.nrw/fragen-und-antworten-zum-einweg-pfand-dosenpfand",
+     "source": "Verbraucherzentrale NRW, Einwegpfand FAQ (Stand 2026-04-21). Current law: § 46(2) VerpackDG of 13.7.2026",
+     "basis": "stated",
+     "quote_en": "You can return them at any shop that sells single-use containers of the same material. The take-back duty is now in § 46(2) VerpackDG (shops under 200 m²: only brands they sell). BSR lists only bottles without a deposit for the Wertstofftonne."
+    },
+    "cap": {
+     "bin": "pfand",
+     "quote": "caps and lids remain attached to the containers during the products’ intended use stage",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0904",
+     "source": "EU Directive 2019/904, Art. 6(1) (applies from 3 July 2024)",
+     "basis": "bonded",
+     "quote_en": "Caps on single-use drink bottles are tethered, so the cap goes back with the bottle."
+    },
+    "ring": {
+     "bin": "pfand",
+     "quote": "(stays on the neck; goes with the bottle)",
+     "url": "https://www.verbraucherzentrale.nrw/fragen-und-antworten-zum-einweg-pfand-dosenpfand",
+     "source": "Verbraucherzentrale NRW, Einwegpfand FAQ",
+     "basis": "bonded"
+    },
+    "label": {
+     "bin": "pfand",
+     "quote": "Fehlen allerdings Pfandzeichen und Strichcode, wird es schwierig, die Verpackung als pfandpflichtig zu identifizieren.",
+     "url": "https://www.verbraucherzentrale.nrw/fragen-und-antworten-zum-einweg-pfand-dosenpfand",
+     "source": "Verbraucherzentrale NRW, Einwegpfand FAQ",
+     "basis": "bonded",
+     "quote_en": "Without the deposit logo and barcode the bottle is hard to identify as a deposit bottle: the label stays on."
+    }
+   },
+   "pizza_box": {
+    "lid": {
+     "bin": "paper",
+     "quote": "Kartons und Pappen grundsätzlich zerreißen, um das Volumen der Papiertonne optimal auszunutzen.",
+     "url": "https://www.bsr.de/pizzakartons-0bda2479162de16f",
+     "source": "BSR Abfall-ABC: Pizzakartons",
+     "basis": "stated",
+     "quote_en": "Pizza boxes: Papier-Tonne. Tear them up."
+    },
+    "base": {
+     "bin": "rest",
+     "quote": "Achtung: Keine stark verschmutzten Pappen (auch keine stark verschmutzte Lebensmittelverpackungen, Pizzakartons und Menüpappen) in die Papiertonne werfen.",
+     "url": "https://www.bsr.de/pizzakartons-0bda2479162de16f",
+     "source": "BSR Abfall-ABC: Pizzakartons",
+     "basis": "nearest",
+     "quote_en": "Heavily soiled pizza boxes must not go in the paper bin. BSR does not name the bin; the same paragraph sends hygiene and coated papers to Restabfall."
+    },
+    "crust": {
+     "bin": "bio",
+     "quote": "Pizzareste bitte in die Biogut-Tonne",
+     "url": "https://www.bsr.de/pizzakartons-0bda2479162de16f",
+     "source": "BSR Abfall-ABC: Pizzakartons",
+     "basis": "stated",
+     "quote_en": "Pizza leftovers go in the Biogut bin."
+    }
+   },
+   "smartphone": {
+    "frame": {
+     "bin": "recyclinghof",
+     "quote": "Aufgrund des Schadstoffgehaltes dürfen Elektrogeräte keinesfalls über die Hausmülltonne entsorgt werden.",
+     "url": "https://www.bsr.de/smartphone-5abfdd55a05d9941",
+     "source": "BSR Abfall-ABC: Smartphone",
+     "basis": "stated",
+     "quote_en": "Because of their pollutants, electrical devices must never go in household waste. Bring small devices like phones to a Recyclinghof (free)."
+    },
+    "battery": {
+     "bin": "recyclinghof",
+     "quote": "Bitte auch alle Kleingeräte wie Handys, Spielkonsolen, Toaster, Föhne, etc. zum Recyclinghof bringen.",
+     "url": "https://www.bsr.de/smartphone-5abfdd55a05d9941",
+     "source": "BSR Abfall-ABC: Smartphone",
+     "basis": "bonded",
+     "quote_en": "Bring small devices like phones to a Recyclinghof. BSR does not say whether to take a built-in battery out."
+    },
+    "board": {
+     "bin": "recyclinghof",
+     "quote": "(inside the phone; goes with it)",
+     "url": "https://www.bsr.de/smartphone-5abfdd55a05d9941",
+     "source": "BSR Abfall-ABC: Smartphone",
+     "basis": "bonded"
+    },
+    "glass": {
+     "bin": "recyclinghof",
+     "quote": "(part of the phone; goes with it)",
+     "url": "https://www.bsr.de/smartphone-5abfdd55a05d9941",
+     "source": "BSR Abfall-ABC: Smartphone",
+     "basis": "bonded"
+    }
+   }
+  },
+  "after": {
+   "smartphone": {
+    "read": "2026-11-16",
+    "works": {
+     "named": true,
+     "head": "Pass it on",
+     "say": "Berlin's advice for any working device: give it away through BSR's online Verschenkmarkt, or hand it in for NochMall, BSR's second-hand store.",
+     "places": [
+      "BSR Verschenkmarkt (online)",
+      "Re-use drop-off for NochMall at 3 of the 14 Recyclinghöfe: Gradestraße 73, Lengeder Straße 6–18, Hegauer Weg 17"
+     ],
+     "quote": "Verschenken oder spenden Sie Ihre Geräte z.B. online über Kleinanzeigen oder den www.bsr.de/verschenkmarkt",
+     "quote_en": "Give away or donate your devices, for example online through classified ads or www.bsr.de/verschenkmarkt.",
+     "source": "BSR leaflet Elektroaltgeräte (Aug 2022)",
+     "url": "https://www.bsr.de/assets/downloads/BSR_Mini-Leporello_Elektrogeraete_web.pdf"
+    },
+    "done": {
+     "head": "Any Recyclinghof, free",
+     "say": "Each of BSR's 14 Recyclinghöfe takes up to 20 old devices free of charge. Shops with more than 400 m² of sales area take old devices back as well.",
+     "quote": "Hier können Sie bis zu 20 Elektroaltgeräte kostenfrei abgeben",
+     "quote_en": "You can hand in up to 20 old electrical devices here free of charge.",
+     "source": "BSR leaflet Elektroaltgeräte (Aug 2022)",
+     "url": "https://www.bsr.de/assets/downloads/BSR_Mini-Leporello_Elektrogeraete_web.pdf",
+     "url2": "https://www.berlin.de/sen/uvk/umwelt/kreislaufwirtschaft/service/privathaushalte/elektroaltgeraete/",
+     "source2": "Senate page Elektroaltgeräte"
+    },
+    "next": {
+     "say": "Not stated in the pages read."
+    },
+    "data": {
+     "who": "not_stated",
+     "short": "Not mentioned",
+     "say": "Not mentioned in the pages read."
+    }
+   }
+  }
+ },
+ "sf": {
+  "name": "San Francisco",
+  "native": "San Francisco",
+  "lat": 37.7749,
+  "lon": -122.4194,
+  "tz": "America/Los_Angeles",
+  "rules_by": "Recology, SF Environment",
+  "lang": "en",
+  "checked": "2026-11-15",
+  "figure": {
+   "value": "35.4 %",
+   "what": "recovery rate reported by Recology, the city's collection company",
+   "period": "2025",
+   "more": "392,385 tons went to landfill in rate year 2025. The city's rates office notes that the method behind the recovery rate has changed over time.",
+   "counts": "The collection company's recovery rate; the method has changed over time",
+   "by": "Recology slides, Refuse Rate Board hearing of 13 Mar 2026",
+   "quote": "Methodology for calculating recovery rate has changed over time.",
+   "url": "https://media.api.sf.gov/documents/Refuse_Rate_Board_Hearing_March_13_2026_RRA__Stakeholder_Presentation.pdf",
+   "read": "2026-11-16",
+   "street": {
+    "pct": "35.4 %",
+    "short": "recovered",
+    "what": "recovered, by the collection company's rate",
+    "clear": 0.354,
+    "clearWord": "recovered",
+    "restWord": "not recovered",
+    "basis": "Recology's recovery rate for 2025; the method behind it has changed over time."
+   }
+  },
+  "bins": [
+   {
+    "id": "blue",
+    "name": "Recycling (blue)",
+    "short": "Blue",
+    "color": "#1f6fd1",
+    "fate": "recycle",
+    "stream": "mixed"
+   },
+   {
+    "id": "green",
+    "name": "Compost (green)",
+    "short": "Green",
+    "color": "#3c9a3c",
+    "fate": "organic",
+    "stream": "organic"
+   },
+   {
+    "id": "black",
+    "name": "Landfill (black)",
+    "short": "Black",
+    "color": "#2b2b2b",
+    "fate": "residual",
+    "stream": "residual"
+   },
+   {
+    "id": "ewaste",
+    "name": "E-waste drop-off (not a cart)",
+    "short": "E-waste",
+    "color": "#9a4fd0",
+    "fate": "return",
+    "stream": "takeback"
+   },
+   {
+    "id": "none",
+    "name": "Not stated",
+    "short": "?",
+    "color": "#b9b4aa",
+    "fate": "unknown",
+    "stream": "unknown"
+   }
+  ],
+  "rules": {
+   "coffee_cup": {
+    "cup": {
+     "bin": "blue",
+     "quote": "Empty paper coffee cups, paper sleeves (plastic lids OK)",
+     "url": "https://sfenvironment.org/files/sfe_zw_posters_85x11_vertical_trilingual.pdf",
+     "source": "SF Environment recycling poster",
+     "basis": "stated"
+    },
+    "lining": {
+     "bin": "blue",
+     "quote": "(bonded to the cup; goes with it)",
+     "url": "https://sfenvironment.org/files/sfe_zw_posters_85x11_vertical_trilingual.pdf",
+     "source": "SF Environment recycling poster",
+     "basis": "bonded"
+    },
+    "sleeve": {
+     "bin": "blue",
+     "quote": "Empty paper coffee cups, paper sleeves (plastic lids OK)",
+     "url": "https://sfenvironment.org/files/sfe_zw_posters_85x11_vertical_trilingual.pdf",
+     "source": "SF Environment recycling poster",
+     "basis": "stated"
+    },
+    "lid": {
+     "bin": "blue",
+     "quote": "Coffee cup lids",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where",
+     "basis": "stated"
+    },
+    "stirrer": {
+     "bin": "green",
+     "quote": "Wooden chopsticks, coffee stirrers, toothpicks",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where (compost)",
+     "basis": "stated"
+    }
+   },
+   "pet_bottle": {
+    "bottle": {
+     "bin": "blue",
+     "quote": "Bottles (leave caps on)",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where",
+     "basis": "stated"
+    },
+    "cap": {
+     "bin": "blue",
+     "quote": "Bottles (leave caps on)",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where",
+     "basis": "stated",
+     "quote_en": "The cap stays on the bottle.",
+     "keep_on": true
+    },
+    "ring": {
+     "bin": "blue",
+     "quote": "(stays on the neck; goes with the bottle)",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where",
+     "basis": "bonded"
+    },
+    "label": {
+     "bin": "none",
+     "quote": "",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Labels are not named in the sources read",
+     "basis": "not_stated"
+    }
+   },
+   "pizza_box": {
+    "lid": {
+     "bin": "blue",
+     "quote": "Cardboard (non-waxed)",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where (recycling)",
+     "basis": "nearest",
+     "quote_en": "Pizza boxes are listed only when greasy; a clean lid is nearest to non-waxed cardboard."
+    },
+    "base": {
+     "bin": "green",
+     "quote": "Greasy pizza boxes and paper bags",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where (compost)",
+     "basis": "stated"
+    },
+    "crust": {
+     "bin": "green",
+     "quote": "Leftovers and spoiled food",
+     "url": "https://www.recology.com/recology-san-francisco/what-goes-where/",
+     "source": "Recology San Francisco, What Goes Where (compost)",
+     "basis": "stated"
+    }
+   },
+   "smartphone": {
+    "frame": {
+     "bin": "ewaste",
+     "quote": "Electronic Wastes includes computers, monitors, peripherals, phones, TVs",
+     "url": "https://www.recology.com/recology-san-francisco/universal-electronic-waste/",
+     "source": "Recology San Francisco, Universal & Electronic Waste",
+     "basis": "stated",
+     "quote_en": "Phones count as electronic waste. \"Drop off electronic waste at the SF Transfer Station.\""
+    },
+    "battery": {
+     "bin": "ewaste",
+     "quote": "Do not attempt to remove batteries from devices.",
+     "url": "https://www.sfenvironment.org/sfrecycles/item/battery-embedded-products",
+     "source": "SF Environment, SFRecycles: battery-embedded products",
+     "basis": "stated",
+     "quote_en": "Leave the battery in the phone and hand the phone in. \"Don't put in any bin.\""
+    },
+    "board": {
+     "bin": "ewaste",
+     "quote": "(inside the phone; goes with it)",
+     "url": "https://www.recology.com/recology-san-francisco/universal-electronic-waste/",
+     "source": "Recology San Francisco, Universal & Electronic Waste",
+     "basis": "bonded"
+    },
+    "glass": {
+     "bin": "ewaste",
+     "quote": "(part of the phone; goes with it)",
+     "url": "https://www.recology.com/recology-san-francisco/universal-electronic-waste/",
+     "source": "Recology San Francisco, Universal & Electronic Waste",
+     "basis": "bonded"
+    }
+   }
+  },
+  "after": {
+   "smartphone": {
+    "read": "2026-11-16",
+    "works": {
+     "named": true,
+     "head": "Donate it",
+     "say": "SF Environment's donation page names Goodwill for electronics, working or broken. Goodwill says it destroys the data before it resells or recycles a device.",
+     "places": [
+      "Goodwill Donation Center, 121 Wisconsin St"
+     ],
+     "quote": "We destroy the data on all electronics before reselling, e-recycling, or disposing of as e-waste.",
+     "source": "SF Environment, Donate unwanted items",
+     "url": "https://www.sfenvironment.org/donate-unwanted-items",
+     "url2": "https://sfgoodwill.org/donate/donate-electronics/",
+     "source2": "Goodwill, Donate electronics",
+     "data": {
+      "who": "collector",
+      "say": "Goodwill says it destroys the data on every device it takes in."
+     }
+    },
+    "done": {
+     "head": "Never in a bin",
+     "say": "Drop it in one of eight Redwood Materials battery bins, with no preparation, or take it to Best Buy or the Recology transfer station.",
+     "places": [
+      "Cole Hardware: 956 Cole St, 70 4th St, 627 Vallejo St, 2254 Polk St",
+      "Sports Basement: 610 Old Mason St, 3251 20th Ave, 1590 Bryant St",
+      "Four Embarcadero Center",
+      "Best Buy, 1717 Harrison St",
+      "Recology transfer station, 501 Tunnel Ave"
+     ],
+     "quote": "Batteries and battery-embedded products cannot be discarded in recycling, compost, or landfill bins.",
+     "source": "SF Environment, press release on public battery drop bins",
+     "url": "https://www.sfenvironment.org/press/san-francisco-becomes-first-nation-offer-public-drop-bins-battery-embedded-product-recycling",
+     "url2": "https://www.sfenvironment.org/sfrecycles/item/cell-phones-non-working",
+     "source2": "SFRecycles, cell phones (non-working)"
+    },
+    "next": {
+     "say": "Not stated in the pages read."
+    },
+    "data": {
+     "who": "not_stated",
+     "short": "Goodwill, if donated; otherwise not mentioned",
+     "say": "Not mentioned in the city pages read."
+    }
+   }
+  }
+ },
+ "tokyo": {
+  "name": "Tokyo (Shinjuku)",
+  "native": "東京都新宿区",
+  "lat": 35.6938,
+  "lon": 139.7034,
+  "tz": "Asia/Tokyo",
+  "rules_by": "Shinjuku City",
+  "lang": "ja",
+  "checked": "2026-11-15",
+  "figure": {
+   "value": "503 g",
+   "what": "of waste collected by the ward, per resident per day",
+   "period": "fiscal 2024",
+   "more": "64,703 t of waste collected and 19,882 t of resources recovered. The ward's targets are set in grams per resident, not as a rate.",
+   "counts": "Ward-collected waste ÷ residents on 1 January ÷ 365 days",
+   "by": "Shinjuku City, waste and resource collection table",
+   "quote": "区民一人１日当たりのごみ量＝区収集ごみ量の計÷１月１日の人口÷365日",
+   "url": "https://www.city.shinjuku.lg.jp/content/000342053.pdf",
+   "read": "2026-11-16",
+   "street": {
+    "pct": "23.5 %",
+    "short": "as resources",
+    "what": "collected as resources",
+    "clear": 0.235,
+    "clearWord": "collected as resources",
+    "restWord": "collected as waste",
+    "computed": "Worked out by Teardown: 19,882 t of resources ÷ (64,703 t of waste + 19,882 t of resources), the ward's own formula for 資源化率 from its 2013 plan. The ward prints no rate for fiscal 2024.",
+    "basis": "19,882 t of resources and 64,703 t of waste collected by the ward in fiscal 2024."
+   }
+  },
+  "bins": [
+   {
+    "id": "burnable",
+    "name": "Burnable (燃やすごみ)",
+    "short": "Burnable",
+    "color": "#c0392b",
+    "fate": "residual",
+    "stream": "residual"
+   },
+   {
+    "id": "plastic",
+    "name": "Resource plastic (資源プラスチック)",
+    "short": "Plastic",
+    "color": "#e67e22",
+    "fate": "recycle",
+    "stream": "plastic"
+   },
+   {
+    "id": "resource",
+    "name": "Resources (資源: PET)",
+    "short": "PET",
+    "color": "#2b9fd6",
+    "fate": "recycle",
+    "stream": "pet"
+   },
+   {
+    "id": "paper",
+    "name": "Used paper (古紙)",
+    "short": "Paper",
+    "color": "#2f6fb3",
+    "fate": "recycle",
+    "stream": "paper"
+   },
+   {
+    "id": "smallelec",
+    "name": "Small-electronics box",
+    "short": "E-box",
+    "color": "#9a4fd0",
+    "fate": "return",
+    "stream": "takeback"
+   },
+   {
+    "id": "none",
+    "name": "Not stated",
+    "short": "?",
+    "color": "#b9b4aa",
+    "fate": "unknown",
+    "stream": "unknown"
+   }
+  ],
+  "rules": {
+   "coffee_cup": {
+    "cup": {
+     "bin": "burnable",
+     "quote": "貝殻、卵の殻、魚の骨、紙コップ、ちり紙…",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00002.html",
+     "source": "Shinjuku City, 燃やすごみの出し方 (updated 2026-04-03)",
+     "basis": "stated",
+     "quote_en": "Shells, eggshells, fish bones, paper cups, tissues… are burnable."
+    },
+    "lining": {
+     "bin": "burnable",
+     "quote": "(bonded to the cup; goes with it)",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00002.html",
+     "source": "Shinjuku City, 燃やすごみの出し方",
+     "basis": "bonded"
+    },
+    "sleeve": {
+     "bin": "none",
+     "quote": "",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Not named in the sources read",
+     "basis": "not_stated"
+    },
+    "lid": {
+     "bin": "plastic",
+     "quote": "ふた・とめ具",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Shinjuku City, 資源・ごみの分け方と出し方 (resource plastic examples)",
+     "basis": "stated",
+     "quote_en": "Lids and fasteners (listed under resource plastic)."
+    },
+    "stirrer": {
+     "bin": "none",
+     "quote": "",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00002.html",
+     "source": "Not named in the sources read",
+     "basis": "not_stated"
+    }
+   },
+   "pet_bottle": {
+    "bottle": {
+     "bin": "resource",
+     "quote": "ペットボトル / ・飲料・食品用 / ・化粧品用 / ・飲み薬用 / 水で軽くすすいでください",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Shinjuku City, 資源・ごみの分け方と出し方",
+     "basis": "stated",
+     "quote_en": "PET bottles (drinks, food, cosmetics, medicine): rinse lightly. Collected weekly as a resource."
+    },
+    "cap": {
+     "bin": "plastic",
+     "quote": "プラスチック製のキャップは資源プラスチックへ",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Shinjuku City, 資源・ごみの分け方と出し方",
+     "basis": "stated",
+     "quote_en": "Plastic caps go to resource plastic."
+    },
+    "ring": {
+     "bin": "resource",
+     "quote": "(stays on the neck; goes with the bottle)",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Shinjuku City, 資源・ごみの分け方と出し方",
+     "basis": "bonded"
+    },
+    "label": {
+     "bin": "plastic",
+     "quote": "キャップとラベルは資源プラスチックへ",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Shinjuku City, 資源・ごみの分け方と出し方",
+     "basis": "stated",
+     "quote_en": "Caps and labels go to resource plastic."
+    }
+   },
+   "pizza_box": {
+    "lid": {
+     "bin": "paper",
+     "quote": "ダンボール",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Shinjuku City, 資源・ごみの分け方と出し方 (古紙)",
+     "basis": "nearest",
+     "quote_en": "Cardboard is listed under used paper. Pizza boxes are not named."
+    },
+    "base": {
+     "bin": "burnable",
+     "quote": "汚れがとれないものは燃やすごみへお出しください。",
+     "url": "https://www.city.shinjuku.lg.jp/content/000452180.pdf",
+     "source": "Shinjuku City, 資源・ごみの分け方と出し方 (古紙)",
+     "basis": "nearest",
+     "quote_en": "Paper whose dirt will not come off goes to burnable. A general rule, not a pizza-box ruling."
+    },
+    "crust": {
+     "bin": "burnable",
+     "quote": "生ごみ",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00002.html",
+     "source": "Shinjuku City, 燃やすごみの出し方 (updated 2026-04-03)",
+     "basis": "stated",
+     "quote_en": "Food scraps are burnable. Drain them first."
+    }
+   },
+   "smartphone": {
+    "frame": {
+     "bin": "smallelec",
+     "quote": "携帯電話",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html",
+     "source": "Shinjuku City, 使用済小型電子機器等の出し方 (updated 2019-04-01)",
+     "basis": "stated",
+     "quote_en": "Mobile phones go in the ward's small-electronics collection boxes. Carrier shops also take them free."
+    },
+    "battery": {
+     "bin": "smallelec",
+     "quote": "取り外しが可能な電池、バッテリー等はあらかじめ外してお持ちください。",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html",
+     "source": "Shinjuku City, 使用済小型電子機器等の出し方",
+     "basis": "bonded",
+     "quote_en": "Remove batteries only if they are removable. A built-in phone battery stays in."
+    },
+    "board": {
+     "bin": "smallelec",
+     "quote": "(inside the phone; goes with it)",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html",
+     "source": "Shinjuku City, 使用済小型電子機器等の出し方",
+     "basis": "bonded"
+    },
+    "glass": {
+     "bin": "smallelec",
+     "quote": "(part of the phone; goes with it)",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html",
+     "source": "Shinjuku City, 使用済小型電子機器等の出し方",
+     "basis": "bonded"
+    }
+   }
+  },
+  "after": {
+   "smartphone": {
+    "read": "2026-11-16",
+    "works": {
+     "named": false,
+     "head": "No way to pass it on is named",
+     "say": "The ward's pages name no reuse or donation channel for a phone that still works. They describe collection only.",
+     "source": "Shinjuku City, 使用済小型電子機器等の出し方",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html"
+    },
+    "done": {
+     "head": "Collection box or counter",
+     "say": "12 collection boxes (the ward office, 10 branch offices and Eco Gallery Shinjuku) and 7 staffed counters. Carrier shops take phones free as well.",
+     "places": [
+      "Ward office, 1st floor: Kabukicho 1-4-1",
+      "Eco Gallery Shinjuku: Nishi-Shinjuku 2-11-4",
+      "Shinjuku Recycling Activity Center: Takadanobaba 4-10-2",
+      "Nishi-Waseda Recycling Activity Center: Nishi-Waseda 3-19-5"
+     ],
+     "quote": "携帯電話・ＰＨＳは、携帯電話事業者のショップ等でも無料で回収しています。",
+     "quote_en": "Mobile phones are also collected free of charge at carrier shops.",
+     "source": "Shinjuku City, 資源回収ボックス設置場所 (updated 2025-04-01)",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00018.html",
+     "url2": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html",
+     "source2": "使用済小型電子機器等の出し方"
+    },
+    "next": {
+     "say": "Handed to operators certified by the national government and turned back into resources.",
+     "quote": "回収した使用済小型電子機器等は、国の認定を受けた「認定事業者」に引き渡して適正に資源化しています。",
+     "source": "Shinjuku City, 使用済小型電子機器等の出し方",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html"
+    },
+    "data": {
+     "who": "you",
+     "short": "You do, before handing it in",
+     "say": "You do. The ward makes the person handing it in responsible for erasing personal data.",
+     "quote": "小型電子機器の個人情報は、排出者が責任を持って消去してください。",
+     "source": "Shinjuku City, 使用済小型電子機器等の出し方",
+     "url": "https://www.city.shinjuku.lg.jp/seikatsu/file09_01_00004.html"
+    },
+    "count": {
+     "say": "268 t of used small electronics collected in fiscal 2024.",
+     "quote": "使用済小型電子機器等",
+     "source": "Shinjuku City, waste and resource collection table",
+     "url": "https://www.city.shinjuku.lg.jp/content/000342053.pdf"
+    }
+   }
+  }
+ }
+}

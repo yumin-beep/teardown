@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teardown: see what it is made of, sort it where you are</title>
+<meta name="description" content="Take an everyday object apart in 3D, see how four cities' official rules sort each part, get the exact moves for your city, then practise until every part lands right.">
+<link rel="stylesheet" href="src/style.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/addons/" } }</script>
+</head><body>
+<header>
+  <div class="brand"><h1>TEARDOWN</h1><p id="claim">See what it is made of. Sort it where you are.</p></div>
+  <nav id="tabs" aria-label="Object"></nav>
+  <div class="who"><button id="mapBtn" data-atlas="open" aria-label="Show the four cities on the globe"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3.6" ry="8.2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M2 10h16M3.4 5.6h13.2M3.4 14.4h13.2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Map</button><label for="city">I sort in</label><select id="city"></select><label for="learned">learned in</label><select id="learned"></select><button id="findBtn">What we found</button></div>
+</header>
+<div id="stage">
+  <div id="view">
+    <main id="grid"></main>
+    <section id="atlas" hidden aria-label="Where the four cities are">
+      <canvas></canvas>
+      <div id="alabels"></div>
+      <div id="acap"></div>
+      <div id="astreet" hidden></div>
+      <button class="aclose" data-atlas="close" aria-label="Close the map">×</button>
+    </section>
+  </div>
+  <aside id="side" hidden></aside>
+  <div id="cap" hidden></div>
+  <div id="summary" hidden></div>
+</div>
+<footer>
+  <nav id="steps" aria-label="Steps"></nav>
+  <div id="scrub"><button id="play" aria-label="Play">▶</button><input id="t" type="range" min="0" max="1" step="0.001" value="0" aria-label="Teardown progress"><span id="phase"></span></div>
+  <button id="next" class="primary"></button>
+</footer>
+<aside id="panel" hidden></aside>
+<div id="findings" hidden></div>
+<script type="module" src="src/app.js"></script>
+</body></html>

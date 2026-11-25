@@ -1,0 +1,249 @@
+:root { --bg: #070b10; --card: #0c131b; --ink: #e4edf6; --muted: #8fa3b7; --line: #1b2b3a; --accent: #6fc3ff; --good: #5fd38a; --bad: #ff7a6b; --unk: #9aa7b3 }
+* { box-sizing: border-box }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font: 15px/1.45 "Inter", system-ui, "Noto Sans KR", "Noto Sans JP", sans-serif }
+body { display: flex; flex-direction: column }
+button, select { font: inherit; color: inherit }
+button { cursor: pointer; background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 7px 14px; color: var(--ink) }
+button:hover:not(:disabled) { border-color: var(--accent) }
+button.primary { background: var(--accent); border-color: var(--accent); color: #04121d; font-weight: 650 }
+button.primary:hover { filter: brightness(1.1) }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+a { color: var(--accent) }
+
+/* header: the claim is the headline, the brand is small */
+header { display: flex; align-items: center; gap: 12px 22px; flex-wrap: wrap; padding: 10px 18px; border-bottom: 1px solid var(--line) }
+.brand { flex: 1 1 340px; min-width: 0 }
+.brand h1 { margin: 0; font-size: 12px; letter-spacing: .32em; font-weight: 700; color: var(--accent) }
+#claim { margin: 1px 0 0; font-size: 19px; line-height: 1.25; color: var(--ink) } #claim b { font-weight: 650 }
+#tabs { display: flex; gap: 6px; flex-wrap: wrap }
+#tabs button { color: var(--muted); border-radius: 999px; padding: 6px 13px; font-size: 13px }
+#tabs button.on { color: #04121d; background: var(--ink); border-color: var(--ink); font-weight: 600 }
+.who { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted) }
+.who select, .moved select { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; color: var(--ink) }
+#findBtn { font-size: 13px; padding: 6px 12px }
+
+/* stage */
+#stage { flex: 1; min-height: 0; position: relative; display: flex }
+#view { flex: 1; min-width: 0; min-height: 0; position: relative; display: flex }
+#grid { flex: 1; min-width: 0; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line) }
+#grid.solo, #grid.hero { grid-template-columns: 1fr }
+#grid.hero .cell:not(:first-child) { display: none } #grid.hero .hud, #grid.hero .bintag { display: none } #grid.kept .bintag { display: none }
+.cell { position: relative; overflow: hidden; background: var(--bg); cursor: grab }
+.cell canvas { width: 100%; height: 100%; display: block }
+.hud { position: absolute; left: 14px; top: 12px; right: 12px; pointer-events: none }
+.city { display: flex; align-items: center; gap: 10px }
+.loc { pointer-events: auto; flex: none; padding: 0; border-radius: 50%; overflow: hidden; line-height: 0; background: var(--bg); border-color: #2a4258 } .loc:hover { border-color: var(--accent) }
+.native { font-style: normal; color: var(--muted); font-size: 13px; margin-left: 7px }
+.city b { font-size: 17px; letter-spacing: .02em; font-weight: 650 }
+.city i { font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #04121d; background: var(--accent); border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: 2px }
+.count { display: block; font-size: 13px; color: var(--accent); margin-top: 1px }
+.tally { font-size: 13px }
+.tally span { display: block } .bad { color: var(--bad) } .good { color: var(--good) } .unk { color: var(--unk) }
+#grid.solo .city i { display: none }
+.city i.from { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent) }
+.bintag { position: absolute; left: 0; top: 0; font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; color: color-mix(in srgb, var(--c) 60%, white); border: 1px solid var(--c); background: rgba(7,11,16,.8); padding: 2px 7px; border-radius: 4px; white-space: nowrap; pointer-events: none }
+.parttag { position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; transition: opacity .25s; line-height: 1.25; background: rgba(7,11,16,.75); border-left: 2px solid var(--accent); padding: 3px 8px; white-space: nowrap }
+.parttag b { display: block; font-size: 13px; font-weight: 600 } .parttag span { color: var(--muted); font-size: 11px }
+.parttag.on { border-left-width: 3px; background: rgba(16,36,54,.92) } .parttag.on b { font-size: 15px; color: #fff }
+svg.leaders { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none } svg.leaders line { stroke: var(--accent); stroke-width: 1; opacity: 0; transition: opacity .25s }
+
+/* hero caption: the question comes first */
+#cap { position: absolute; left: 28px; bottom: 26px; max-width: 560px; pointer-events: none }
+#cap small { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 600 }
+#cap b { display: block; font-size: 42px; line-height: 1.1; letter-spacing: -.01em; margin: 4px 0 8px; font-weight: 700 }
+#cap span { color: var(--muted); font-size: 16px; line-height: 1.45 }
+#cap .cta { pointer-events: auto; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: nowrap }
+#cap .guess { border-color: var(--accent); color: var(--accent); font-weight: 650; background: rgba(7,11,16,.7); white-space: nowrap; padding: 8px 16px }
+#cap .guess:hover { background: var(--accent); color: #04121d }
+#cap em { font-style: normal; color: var(--muted); font-size: 13.5px; line-height: 1.4; max-width: 330px }
+
+/* footer: steps, scrubber, next */
+footer { display: flex; gap: 14px; align-items: center; padding: 10px 18px 12px; border-top: 1px solid var(--line); flex-wrap: wrap }
+#steps { display: flex; gap: 4px; flex-wrap: wrap }
+#steps button { border-color: transparent; color: var(--muted); padding: 6px 10px; font-size: 13.5px; display: flex; align-items: center; gap: 7px }
+#steps button i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: 11px; font-weight: 700 }
+#steps button.done { color: var(--ink) } #steps button.done i { background: var(--line); }
+#steps button.on { color: #fff; border-color: var(--line); background: var(--card) } #steps button.on i { background: var(--accent); border-color: var(--accent); color: #04121d }
+#scrub { flex: 1 1 260px; display: flex; gap: 10px; align-items: center; min-width: 0 }
+#scrub input { flex: 1; min-width: 60px; accent-color: var(--accent) }
+#phase { width: 150px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em }
+#play { width: 34px; height: 34px; border-radius: 50%; border-color: var(--accent); color: var(--accent); font-size: 12px; padding: 0; flex: none }
+#next { margin-left: auto; white-space: nowrap }
+[hidden] { display: none !important }
+
+/* shared pieces */
+.eyebrow { margin: 0 0 4px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600 }
+.chip { display: inline-block; min-width: 64px; font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; color: color-mix(in srgb, var(--c) 60%, white); border: 1px solid var(--c); border-radius: 4px; padding: 1px 7px; text-align: center; white-space: nowrap }
+.cta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px }
+.fine { color: var(--muted); font-size: 12.5px; margin: 12px 0 0 }
+.tag { font-size: 11px; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; margin-left: 4px; color: var(--muted); white-space: nowrap }
+blockquote { margin: 0 0 4px; padding: 7px 11px; background: #101b26; border-left: 2px solid var(--accent); font-size: 14px }
+.gloss { margin: 0 0 4px; color: var(--muted); font-size: 13px }
+.note { margin: 0 0 4px; font-size: 13px; color: var(--muted); font-style: italic }
+.mat { color: var(--muted); margin: 4px 0 12px; font-size: 13.5px }
+
+/* verdict after the sort: a bar under the four views; each view carries its own result list */
+#summary { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; background: linear-gradient(rgba(7,11,16,0), rgba(7,11,16,.94) 26%); padding: 30px 20px 12px; pointer-events: none }
+#summary > * { pointer-events: auto }
+#summary .say { flex: 1 1 420px } #summary h3 { margin: 0; font-size: 26px; line-height: 1.15; letter-spacing: -.01em } #summary .say p { margin: 2px 0 0; color: var(--muted); max-width: 860px } #summary .say p.mover { color: var(--ink); margin-top: 5px } .mover b { color: var(--accent) }
+#summary .cta { margin: 0 } .key { flex: 1 1 100%; margin: 2px 0 0; color: var(--muted); font-size: 12px }
+.res { opacity: 0; transition: opacity .5s; margin-top: 8px; max-width: 250px } #grid.sorted .res { opacity: 1 } #grid.solo .res, #grid.hero .res { display: none }
+.res ul { list-style: none; margin: 0 0 6px; padding: 0 } .res li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13.5px; padding: 2.5px 0; border-top: 1px solid var(--line) }
+.chip.att { border-style: dashed }
+.bintag.empty { border-style: dashed }
+th.me { color: var(--accent) !important }
+
+/* side card: your city, your turn */
+#side { flex: 0 0 min(560px, 44%); overflow: auto; background: var(--card); border-left: 1px solid var(--line); padding: 18px 20px 22px }
+#side h2 { margin: 0; font-size: 24px; line-height: 1.2; letter-spacing: -.01em }
+.lead { margin: 8px 0 14px; color: var(--muted) } .lead b { color: var(--ink) }
+.moves { list-style: none; margin: 0; padding: 0; counter-reset: mv }
+.move { counter-increment: mv; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; transition: border-color .15s, background .15s }
+.move:hover { border-color: var(--accent); background: #0f1a25 }
+.mv { display: flex; align-items: center; gap: 8px; flex-wrap: wrap } .mv::before { content: counter(mv); width: 22px; height: 22px; border-radius: 50%; background: var(--line); display: grid; place-items: center; font-size: 12px; font-weight: 700; flex: none }
+.move.none .mv::before { content: "?" }
+.mv b { font-size: 15px } .fate { font-style: normal; font-size: 11.5px; margin-left: auto; color: var(--f); border: 1px solid color-mix(in srgb, var(--f) 45%, transparent); border-radius: 999px; padding: 1px 8px; white-space: nowrap }
+.move ul { list-style: none; margin: 8px 0 0; padding: 0 0 0 30px } .move ul li { padding: 3px 0; font-size: 14px; cursor: pointer } .move.none ul li { cursor: default }
+.move ul li b { font-weight: 600 } .move ul li em { font-style: normal; font-size: 12px; color: var(--muted); margin-left: 7px } .move ul li em.near { color: var(--unk) }
+.move ul li span { display: block; color: var(--muted); font-size: 13px }
+/* beyond the bin: the way a whole device takes, stop by stop */
+.onward { margin: 0 0 14px; padding: 12px 14px 12px; border: 1px solid var(--line); border-radius: 10px; background: #0a1118 } .onward h3 { margin: 0 0 9px; font-size: 19px; line-height: 1.2 }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 9px; padding: 3px; gap: 3px; background: #0a1118 } .seg button { border: 0; border-radius: 6px; padding: 6px 14px; color: var(--muted); font-size: 14px } .seg button.on { background: var(--ink); color: #04121d; font-weight: 650 }
+.stops { list-style: none; margin: 14px 0 0; padding: 0 } .stops > li { position: relative; padding: 0 0 15px 26px }
+.stops > li::before { content: ""; position: absolute; left: 5px; top: 4px; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px #0a1118 } .stops > li::after { content: ""; position: absolute; left: 10px; top: 8px; bottom: -4px; width: 1.5px; background: #2a4258; z-index: 0 }
+.stops > li::before { z-index: 1 } .stops > li:last-child::after { display: none } .stops > li:last-child { padding-bottom: 2px }
+.stops > li.gap::before { background: #0a1118; box-shadow: inset 0 0 0 1.5px var(--unk), 0 0 0 3px #0a1118 }
+.stops > li > span { display: block; font: 600 11.5px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); line-height: 1.6 } .stops > li.gap > span { color: var(--unk) }
+.stops > li > b { display: block; font-size: 16px; margin: 1px 0 2px } .stops > li.gap > b { color: var(--unk) } .stops > li > p { margin: 0 0 5px; font-size: 14px; color: var(--ink) } .stops > li.gap > p { color: var(--muted) } .stops p.gloss { color: var(--muted); font-size: 13px }
+.stops ul { list-style: none; margin: 2px 0 7px; padding: 0 } .stops ul li { font-size: 13.5px; color: var(--muted); padding: 3px 0 3px 12px; border-left: 2px solid #2a4258; margin-bottom: 2px }
+.stops blockquote { font-size: 13.5px; margin-top: 4px } .stops small { display: block; font-size: 12px; color: var(--muted); margin-top: 3px } .onward .fine { margin-top: 8px }
+.note2 { margin: 0 0 8px; color: var(--muted); max-width: 820px } table.own td b { font-size: 16px; white-space: nowrap } table.own td span { color: var(--muted) } table.own td .unk { color: var(--unk); display: inline } table.own td:first-child { white-space: nowrap; font-weight: 600 } table.own td.me { color: var(--accent) } table.own td a { white-space: normal }
+.moved { border: 1px solid var(--line); border-radius: 10px; margin: 0 0 12px; padding: 9px 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; background: #0a1118 }
+#diff { flex: 1 1 100% } #diff p { margin: 4px 0 } #diff:empty { display: none }
+#side > .cta:last-child { position: sticky; bottom: -22px; margin: 6px -20px -22px; padding: 12px 20px 18px; background: linear-gradient(rgba(12,19,27,0), var(--card) 34%) }
+.changes { list-style: none; margin: 6px 0 0; padding: 0 } .changes li { padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px } .changes li b { display: block; margin-bottom: 3px }
+.changes div { display: grid; grid-template-columns: 132px 1fr auto; gap: 8px; align-items: center; padding: 2px 0; color: var(--muted) } .changes div em { font-style: normal } .changes div.now { color: var(--ink) } .changes div.now span { color: var(--accent); font-weight: 600 }
+.prog { display: flex; gap: 5px; margin: 6px 0 14px } .prog i { flex: 1; height: 5px; border-radius: 3px; background: var(--line) } .prog i.now { background: var(--accent) } .prog i.ok { background: var(--good) } .prog i.no { background: var(--bad) }
+.ask { margin: 0 0 8px; font-weight: 600 }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px }
+.opts button { text-align: left; border-color: color-mix(in srgb, var(--c) 70%, transparent); border-left: 5px solid var(--c); border-radius: 8px; padding: 8px 10px; font-size: 14px; display: flex; gap: 8px; align-items: baseline; line-height: 1.25 }
+.opts kbd { font: 600 11px ui-monospace, monospace; color: var(--muted) }
+.opts button:hover:not(:disabled) { background: color-mix(in srgb, var(--c) 16%, transparent) }
+.opts.locked button { opacity: .38; cursor: default } .opts.locked button.right { opacity: 1; background: color-mix(in srgb, var(--good) 20%, transparent); border-color: var(--good); border-left-color: var(--good) }
+.opts.locked button.wrong { opacity: 1; border-color: var(--bad); border-left-color: var(--bad); text-decoration: line-through }
+.fb { margin-top: 12px; border-radius: 10px; padding: 10px 12px; border: 1px solid var(--line) } .fb.ok { border-color: color-mix(in srgb, var(--good) 55%, transparent) } .fb.no { border-color: color-mix(in srgb, var(--bad) 55%, transparent) }
+.verdict { margin: 0 0 8px; font-size: 15px } .fb.ok .verdict::before { content: "✓ "; color: var(--good); font-weight: 700 } .fb.no .verdict::before { content: "✕ "; color: var(--bad); font-weight: 700 }
+.fb a { font-size: 13px }
+.cface { float: left; width: 84px; height: 84px; border-radius: 50%; margin: 0 13px 4px 0; border: 1px solid var(--line) } .fb.ok .cface { border-color: color-mix(in srgb, var(--good) 60%, transparent) } .fb.no .cface { border-color: color-mix(in srgb, var(--bad) 60%, transparent) } .fb::after, p.street::after { content: ""; display: block; clear: both } .fb blockquote, .fb .fx { overflow: hidden }
+p.street .cface { width: 64px; height: 64px; margin-bottom: 2px } p.street { min-height: 66px }
+.bar { height: 10px; border-radius: 5px; background: color-mix(in srgb, var(--bad) 55%, var(--line)); margin: 10px 0 12px; overflow: hidden } .bar i { display: block; height: 100%; background: var(--good) }
+.marks { list-style: none; margin: 0; padding: 0 } .marks li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); cursor: pointer }
+.marks li::before { content: "✓"; color: var(--good); font-weight: 700; width: 16px } .marks li.no::before { content: "✕"; color: var(--bad) }
+.marks li em { font-style: normal; font-size: 12px; color: var(--muted) } .marks .chip { margin-left: auto }
+.base { margin: 0 0 6px; font-size: 14px; color: var(--muted) } .base b { color: var(--accent) } .split { margin: 0 0 8px; font-size: 13.5px; color: var(--muted) } .split b { color: var(--ink) }
+.also { margin: 8px 0 4px; font-size: 13px; color: var(--muted) } .also b { color: var(--ink) }
+.runs { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-top: 12px; font-size: 14px } .runs span { font-variant-numeric: tabular-nums; font-weight: 650 } .runs span i { font-style: normal; font-weight: 400; color: var(--muted); font-size: 12px; margin-right: 4px }
+
+/* part panel: every city's sentence for one part */
+#panel { position: fixed; right: 12px; top: 12px; bottom: 12px; width: min(460px, calc(100% - 24px)); overflow: auto; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; box-shadow: 0 8px 40px rgba(0,0,0,.6); z-index: 5 }
+#panel h2 { margin: 0; font-size: 22px }
+.rule { border-top: 1px solid var(--line); padding: 10px 0 } .rule.me { border-left: 3px solid var(--accent); padding-left: 10px } .rc { margin-bottom: 6px } #panel a { font-size: 13px }
+.dot { display: inline-block; width: 11px; height: 11px; border-radius: 2px; vertical-align: -1px; margin-right: 6px }
+.close { margin-top: 10px }
+
+/* findings sheet */
+#findings { position: fixed; inset: 0; background: rgba(3,6,10,.72); display: grid; place-items: center; padding: 16px; z-index: 6 }
+.sheet { position: relative; width: min(940px, 100%); max-height: 100%; overflow: auto; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 30px; box-shadow: 0 12px 60px rgba(0,0,0,.7) }
+.sheet .close { position: absolute; right: 14px; top: 12px; margin: 0; border: 0; font-size: 24px; line-height: 1; padding: 4px 10px; color: var(--muted) }
+.sheet h2 { margin: 0 0 12px; font-size: 34px; line-height: 1.1; letter-spacing: -.015em } .sheet h3 { margin: 20px 0 6px; font-size: 18px }
+.find { margin: 0 0 16px; padding-left: 22px } .find li { margin-bottom: 8px; color: var(--muted) } .find li b { color: var(--ink) } .find li::marker { color: var(--accent); font-weight: 700 }
+.sheet table { border-collapse: collapse; width: 100%; font-size: 14px } .sheet th { text-align: left; color: var(--muted); font-weight: 600; font-size: 13px; padding: 5px 10px }
+.sheet td { border-top: 1px solid var(--line); padding: 6px 10px; vertical-align: top } .sheet td span { display: block; font-size: 12.5px } .sheet th .s { display: none } .sheet tr.tot td { border-top: 2px solid var(--line); color: var(--muted) }
+.sowhat { margin: 0; padding-left: 20px } .sowhat li { margin-bottom: 7px; color: var(--muted) } .sowhat li b { color: var(--ink) }
+.sheet details { margin-top: 14px; font-size: 14px } .sheet summary { cursor: pointer; color: var(--accent) } .gaps td { font-size: 13px; padding: 4px 10px }
+
+.scroll { overflow-x: auto }
+textarea.csv { display: block; width: 100%; margin-top: 8px; background: #08101a; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 8px; font: 12px ui-monospace, Menlo, monospace }
+/* atlas: the globe over the 3D view */
+#atlas { position: absolute; inset: 0; z-index: 3; background: var(--bg); overflow: hidden; opacity: 0 }
+#atlas canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none }
+#atlas::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(130% 110% at 62% 50%, rgba(7,11,16,0) 52%, rgba(7,11,16,.78) 100%), linear-gradient(90deg, rgba(7,11,16,.9), rgba(7,11,16,0) 48%) }
+#alabels { position: absolute; inset: 0; pointer-events: none; z-index: 2 }
+.alabel { position: absolute; left: 0; top: 0; pointer-events: auto; background: rgba(7,11,16,.74); border-color: #24394d; border-radius: 9px; padding: 5px 11px 6px; text-align: left; line-height: 1.25; white-space: nowrap }
+.alabel.left { text-align: right } .alabel:hover { border-color: var(--accent) }
+.alabel b { font-size: 16px; font-weight: 650; letter-spacing: .01em } .alabel i { font-style: normal; color: var(--muted); font-size: 13px; margin-left: 7px }
+.alabel u { text-decoration: none; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #04121d; background: var(--accent); border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: 2px } .alabel u.from { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent) }
+.alabel span { display: block; font-size: 12px; color: var(--accent) }
+.achip { position: absolute; left: 0; top: 0; font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; color: #ffd8c0; background: rgba(34,17,10,.9); border: 1px solid rgba(255,170,120,.75); border-radius: 999px; padding: 2px 9px; white-space: nowrap }
+.achip.calm { color: #c6f1d5; background: rgba(9,28,18,.9); border-color: rgba(95,211,138,.7) }
+#acap { position: absolute; left: 28px; bottom: 26px; width: min(440px, 38%); z-index: 2 }
+#acap small { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 600 }
+#acap > b { display: block; font-size: 40px; line-height: 1.08; letter-spacing: -.01em; margin: 4px 0 10px; font-weight: 700 } #acap > b i { font-style: normal; font-weight: 500; color: var(--muted); font-size: .55em; margin-left: 12px }
+#acap > span { display: block; color: var(--muted); font-size: 16px; line-height: 1.45 } #acap > em { display: block; font-style: normal; color: var(--muted); font-size: 13px; margin-top: 12px; opacity: .8 }
+#acap.card { max-height: calc(100% - 44px); overflow: auto; background: rgba(10,17,25,.9); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 16px; box-shadow: 0 10px 50px rgba(0,0,0,.5) }
+#acap.card small { letter-spacing: .08em; font: 600 12.5px ui-monospace, "SF Mono", Menlo, monospace } #acap.card > b { font-size: 34px; margin-bottom: 8px }
+#acap p { margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: var(--muted) } #acap p b { color: var(--ink) } #acap .by { margin-top: 0 }
+#acap .route { border-left: 2px solid #ffaa78; padding: 2px 0 2px 11px; margin: 4px 0 12px; color: var(--ink) } #acap .route span { display: block; font-size: 12.5px; color: #ffc9a8 } #acap .route b { font-size: 18px }
+#acap .binsline { display: flex; flex-wrap: wrap; gap: 5px; align-items: center } #acap .binsline span { flex: 1 1 100%; font-size: 12.5px } #acap .binsline .chip { font-style: normal; min-width: 0 }
+#acap .cta { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap }
+#acap.card .cta { position: sticky; bottom: -16px; margin: 6px -20px -16px; padding: 12px 20px 16px; background: linear-gradient(rgba(10,17,25,0), rgb(10,17,25) 26%) } /* the buttons stay in reach when a short window scrolls the card */
+/* the number a city publishes about itself: its year and what it counts stay attached to it */
+#acap .fig { margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--line) }
+#acap .fig > span { display: block; font: 600 11.5px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent) }
+#acap .fig p { margin: 5px 0 0; display: flex; align-items: center; gap: 12px; color: var(--ink) } #acap .fig p b { font-size: 30px; line-height: 1; letter-spacing: -.01em; white-space: nowrap; font-weight: 700 } #acap .fig p i { font-style: normal; font-size: 14px; line-height: 1.35 }
+#acap .fig em { display: block; font-style: normal; color: var(--muted); font-size: 13px; line-height: 1.4; margin-top: 6px }
+#acap .fig small { display: block; letter-spacing: 0; text-transform: none; font: 12px/1.4 inherit; font-family: inherit; color: var(--muted); margin-top: 5px; font-weight: 400 } #acap .fig small a { color: var(--accent) }
+#atlas.narrow #acap .fig em, #atlas.narrow #acap .fig small { display: none } #atlas.narrow #acap .fig { margin-top: 8px; padding-top: 7px } #atlas.narrow #acap .fig p b { font-size: 22px } #atlas.narrow #acap .fig p i { font-size: 12.5px }
+.aclose { position: absolute; right: 12px; top: 8px; z-index: 3; border: 0; font-size: 26px; line-height: 1; padding: 4px 10px; color: var(--muted) }
+#atlas.mid #acap > b { font-size: 30px } #atlas.mid #acap.card > b { font-size: 28px } #atlas.mid #acap > span { font-size: 14.5px }
+#atlas.narrow::after { background: linear-gradient(0deg, rgba(7,11,16,.92), rgba(7,11,16,0) 42%) }
+#atlas.narrow #acap { left: 12px; right: 12px; bottom: 10px; width: auto }
+#atlas.narrow #acap > b { font-size: 22px; margin: 2px 0 0 } #atlas.narrow #acap > span, #atlas.narrow #acap > em { display: none }
+#atlas.narrow #acap.card { padding: 12px 14px 12px } #atlas.narrow #acap.card > b { font-size: 24px; margin-bottom: 4px } #atlas.narrow #acap .fine, #atlas.narrow #acap .by { display: none } #atlas.narrow #acap p { font-size: 13px; margin-top: 6px } #atlas.narrow #acap.card .cta { bottom: -12px; margin: 4px -14px -12px; padding: 8px 14px 12px } #atlas.narrow #acap .cta button { padding: 6px 12px; font-size: 14px }
+#atlas.narrow .alabel { padding: 3px 7px 4px } #atlas.narrow .alabel b { font-size: 13px } #atlas.narrow .alabel i { display: none } #atlas.narrow .alabel span { font-size: 11px } #atlas.narrow .achip { font-size: 11px; padding: 1px 7px }
+#acap > b i { display: inline-block; white-space: nowrap }
+.fx { margin: 8px 0 0; font-size: 13.5px; line-height: 1.45; padding: 7px 10px; border-radius: 8px; background: rgba(255,122,107,.08); border: 1px solid rgba(255,122,107,.35) } .fx .chip { min-width: 0; margin: 0 2px }
+.street { margin: 10px 0 0; font-size: 14px; color: var(--muted) } .street b { color: var(--ink) }
+/* the city's street in words: the bar and key that go with the kerb behind the bins */
+.sbar { display: flex; gap: 2px; height: 7px; border-radius: 4px; overflow: hidden; width: 100% } .sbar i { display: block; min-width: 3px }
+.own { margin-top: 7px; font-size: 12.5px; line-height: 1.3; color: var(--muted) } .own b { color: var(--ink); font-weight: 650 } .own > span:not(.sbar) { display: block; margin-top: 3px; white-space: nowrap } .own.line { max-width: 260px; margin-top: 9px } #grid[data-mode="city"] .own.line { display: none } .own.line > span:not(.sbar)::after { content: " · the street behind"; opacity: .8 }
+.own.big { position: absolute; left: 14px; bottom: 14px; width: min(350px, 46%); margin: 0; padding: 11px 13px 10px; background: rgba(10,17,25,.88); border: 1px solid var(--line); border-radius: 10px; pointer-events: none; opacity: 0; transition: opacity .5s } #grid.streeton .own.big { opacity: 1 }
+.own.big small, #astreet small { display: block; font: 600 11px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--accent) }
+.own.big p, #astreet p { margin: 3px 0 7px; font-size: 14px; line-height: 1.3; color: var(--ink); display: flex; align-items: baseline; gap: 8px } .own.big p b, #astreet p b { font-size: 24px; line-height: 1; white-space: nowrap; font-weight: 700 }
+.own.big ul, #astreet ul { list-style: none; margin: 7px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px 14px } .own.big li, #astreet li { font-size: 12.5px; color: var(--ink) } .own.big li::before, #astreet li::before, .key2 i::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; background: var(--c); margin-right: 6px } .own.big li i, #astreet li i { font-style: normal; color: var(--muted); margin-left: 6px }
+.own.big em, #astreet em { display: block; font-style: normal; font-size: 12px; line-height: 1.4; margin-top: 6px; color: var(--muted) }
+#grid:not(.solo) .hud { z-index: 1 } #grid:not(.solo).sorted .hud::before { content: ""; position: absolute; inset: -12px -12px -16px -14px; z-index: -1; background: linear-gradient(rgba(7,11,16,.97) 88%, rgba(7,11,16,0)) }
+#astreet { position: absolute; right: 26px; bottom: 26px; width: min(450px, 40%); z-index: 2; background: rgba(10,17,25,.92); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 50px rgba(0,0,0,.5) }
+#astreet img { display: block; width: 100%; height: auto } #astreet > div { padding: 10px 14px 12px } #atlas.narrow #astreet { display: none }
+.streets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 4px 0 2px } .streets figure { margin: 0; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: #0a1118 } .streets img { display: block; width: 100%; height: auto }
+.streets figcaption { padding: 7px 9px 8px; font-size: 12.5px; color: var(--muted) } .streets figcaption b { display: block; color: var(--ink); font-size: 13.5px; margin-bottom: 5px } .streets figcaption span:not(.sbar) { display: block; margin-top: 4px }
+.key2 { margin: 6px 0 12px } .key2 i { font-style: normal; white-space: nowrap; margin-left: 10px }
+#mapBtn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 6px 11px; margin-right: 4px } #mapBtn svg { color: var(--accent) }
+@media (max-width: 1250px) { #grid:not(.solo) .own > span:not(.sbar) { white-space: normal } }
+@media (max-width: 900px) {
+  #grid { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr } #grid.solo, #grid.hero { grid-template-columns: 1fr; grid-template-rows: 1fr }
+  #stage { flex-direction: column } #side { flex: 0 0 auto; max-height: 56%; border-left: 0; border-top: 1px solid var(--line); padding: 14px 16px 18px }
+  #cap b { font-size: 30px } #claim { font-size: 16px } #phase { display: none } .opts { grid-template-columns: 1fr }
+  #side > .cta:last-child { position: static; margin: 14px 0 0; padding: 0; background: none }
+  .sheet { padding: 18px 16px } .sheet h2 { font-size: 26px }
+  .streets { grid-template-columns: 1fr 1fr } .key2 i { display: block; margin: 2px 0 0 }
+}
+@media (max-width: 600px) {
+  header { padding: 8px 12px; gap: 8px 12px } .brand { flex-basis: 100% } #claim { font-size: 15px }
+  #tabs { flex-wrap: nowrap; overflow-x: auto; flex: 1 1 100%; padding-bottom: 2px } #tabs button { white-space: nowrap; flex: none }
+  .who { flex: 1 1 100%; justify-content: space-between }
+  footer { padding: 8px 12px 10px; gap: 8px }
+  #steps { flex-wrap: nowrap; flex: 1 1 100%; justify-content: space-between } #steps button { padding: 5px 6px; font-size: 13px } #steps button:not(.on) { font-size: 0; gap: 0 } #steps button:not(.on) i { font-size: 11px }
+  #scrub { flex: 1 1 120px } #next { margin-left: 0 }
+  .hud { left: 8px; top: 6px; right: 8px } .city b { font-size: 14px } .count, .tally { display: none }
+  .res { margin-top: 3px; max-width: none } .res li { font-size: 11px; padding: 1px 0; gap: 4px } .res .chip { min-width: 0; font-size: 10px; padding: 0 4px }
+  #grid:not(.solo) .bintag { display: none } /* four narrow views: the list above carries the bin names */
+  #summary { position: static; background: var(--card); border-top: 1px solid var(--line); padding: 10px 12px } #summary h3 { font-size: 18px } #summary .say { flex-basis: 100% } #summary .say p:not(.mover), .key { display: none } #summary .cta button { padding: 6px 10px; font-size: 13.5px }
+  .who { flex-wrap: wrap } .who select { padding: 5px 6px; max-width: 132px } #findBtn { margin-left: auto }
+  #cap .cta { flex-wrap: wrap } .sheet th, .sheet td { padding: 5px 5px; font-size: 12.5px } .sheet .np, .sheet th .l { display: none } .sheet th .s { display: inline } .sheet td span { font-size: 11px; white-space: nowrap }
+  #grid.solo .bintag { font-size: 10px; padding: 1px 4px } #grid[data-mode="practice"] .bintag { display: none } /* the answer buttons carry the bin names and colours */
+  #cap { left: 14px; bottom: 14px; right: 14px } #cap b { font-size: 26px } #cap span { font-size: 14px }
+  #side h2 { font-size: 20px } .parttag span { display: none }
+  .own { font-size: 10.5px; margin-top: 3px } .own.big { display: none } #grid[data-mode="city"] .own.line { display: block } .own.line { max-width: 200px; margin-top: 6px } .own.line > span:not(.sbar)::after { content: "" } .own.line > span:not(.sbar) { display: inline-block; background: rgba(7,11,16,.78); box-shadow: 0 0 0 3px rgba(7,11,16,.78); border-radius: 2px }
+}
+p.friend { font-size: 12.5px; line-height: 1.45; color: #9fb4c8; margin: 6px 0 10px } p.friend b { color: #dbe7f2 } p.friend a { font-size: 12px }
